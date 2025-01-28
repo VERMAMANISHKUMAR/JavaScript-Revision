@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Counter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+
+    .counter {
+      font-size: 2em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div>
+  <p>Count 1:</p>
+  <div id="count1" class="counter">0</div>
+</div>
+
+<div>
+  <p>Count 2:</p>
+  <div id="count2" class="counter">100</div>
+</div>
+
+<div>
+  <p>Count 3:</p>
+  <div id="count3" class="counter">0</div>
+</div>
+
+<div>
+  <p>Count 4:</p>
+  <div id="count4" class="counter">0</div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    function counter(id, start, end, duration) {
+      let obj = document.getElementById(id),
+        current = start,
+        range = end - start,
+        increment = end > start ? 1 : -1,
+        step = Math.abs(Math.floor(duration / range)),
+        timer = setInterval(() => {
+          current += increment;
+          obj.textContent = current;
+          if (current == end) {
+            clearInterval(timer);
+          }
+        }, step);
+    }
+
+    counter("count1", 0, 1367, 3000);
+    counter("count2", 100, 3452, 3000);
+    counter("count3", 0, 6843, 3000);
+    counter("count4", 0, 5634, 3000);
+  });
+</script>
+
+</body>
+</html>
